@@ -155,8 +155,10 @@ class Instructor extends Lambdasian {
     let pointChanges = Math.ceil(Math.random() * 50);
     let addOrSubtract = Math.random() < .5 ? -1: 1;
     student.grade = student.grade + (pointChanges * addOrSubtract);
-    if(student.grade >= 0) {
+    if(student.grade >= 0 && student.grade <= 100) {
       return student.grade;
+    } else if(student.grade > 100) {
+      return student.grade = 100;
     } else {
       return student.grade = 0;
     };
@@ -242,7 +244,7 @@ class ProjectManager extends Instructor {
       + If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score.
 */
 const instructor1 = new Instructor({});
-const student1 = new Student({name: 'James', grade: 10});
+const student1 = new Student({name: 'James', grade: 50});
 console.log(instructor1.corrections(student1));
 console.log(student1.graduate());
 
